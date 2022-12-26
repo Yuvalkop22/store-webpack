@@ -7,8 +7,26 @@
     <title>Main Page</title>
 </head>
 <body>
-    <div class="mainDiv">
-        <h1>Hello</h1>
+    <div class="headline">
+        <h1>Yuval Kopelman's Store</h1>
+    </div>
+    <div class="navBar">
+        <form>
+            <label>Enter product name: </label>
+            <input type="text" name="productName" id="productName"/>
+            <button type="button">Search</button>
+        </form>
+    </div>
+    <div class="catalog">
     </div>
 </body>
+<script>
+    document.querySelector("button").addEventListener("click",result);
+    function result() {
+        let a= document.getElementById('productName').value;
+        let br = document.createElement("br");
+        document.querySelector(".navBar").append(br);
+        document.querySelector('.navBar').append(a);
+    }
+</script>
 </html>
