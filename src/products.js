@@ -40,6 +40,12 @@ const products = [
         "name": "motorcycle",
         "price": 20000,
         "imgUrl": "https://cdn.britannica.com/16/126516-050-2D2DB8AC/Triumph-Rocket-III-motorcycle-2005.jpg"
+    },
+    {
+        "id": 8,
+        "name": "lalala",
+        "price": 2,
+        "imgUrl": "https://cdn.britannica.com/16/126516-050-2D2DB8AC/Triumph-Rocket-III-motorcycle-2005.jpg"
     }
 ]
 export {products};
