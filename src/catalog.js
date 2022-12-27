@@ -32,7 +32,11 @@ for (let i = 0; i< products.length; i++){
     catalogDiv.append(btn);
     btn.addEventListener("click",function f() {
         const amount1 = document.getElementById(i).value;
-        selectedProducts.push(products[i]);
+        selectedProducts.push({
+            "product": products[i].name,
+            "amount": amount1,
+            "key": selectedProducts.length
+        });
         var productCart = document.createElement("div");
         document.querySelector(".cart").append(productCart);
         productCart.setAttribute('style', 'font-family:sans-serif;border: 1px solid black; margin:0; height: 110px; width: 100%; background-color: lightgreen');
@@ -54,5 +58,10 @@ for (let i = 0; i< products.length; i++){
             document.getElementById("totalP").innerHTML = prefix + shave + totalPrice;
         })
     });
+}
+const orderBtn = document.getElementById("btnOrder");
+orderBtn.addEventListener("click", result);
+function result(){
+    console.log(selectedProducts);
 }
 export {selectedProducts};
