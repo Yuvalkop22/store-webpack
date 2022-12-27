@@ -28,7 +28,11 @@ h1{
 }
 .catalog{
     width: 100%;
-    border: 1px solid black;
-    text-align: center;
+    display: grid;
+    background-color: wheat;
+    margin: 0px auto;
     justify-content: center;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 0px; 
+    border: 1px solid black;
 }

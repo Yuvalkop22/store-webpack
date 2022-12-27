@@ -5,7 +5,7 @@ let totalPrice = Number.parseInt(document.getElementById("totalP").innerHTML.spl
 for (let i = 0; i< products.length; i++){
     var catalogDiv = document.createElement("div");
     document.querySelector(".catalog").append(catalogDiv);
-    catalogDiv.setAttribute('style', 'border: 1px solid black; height: 200px; text-align: center; justify-content:center; align-items:center; width: 20%; background-color: wheat');
+    catalogDiv.setAttribute('style', 'border: 1px solid black; margin:10px; font-family:sans-serif; height: 200px; text-align: center; width: 50%;background-color: lightblue;');
     var newH1 = document.createElement("h3");
     newH1.innerHTML = products[i].name;
     var newH2 = document.createElement("h3");
