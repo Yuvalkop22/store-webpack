@@ -3,6 +3,7 @@ import "./styles/main.css";
 let selectedProducts = [];
 let totalPrice = Number.parseInt(document.getElementById("totalP").innerHTML.split("=")[1].split(" ")[1]);
 var amount = 0;
+let nameAmount = "";
 for (let i = 0; i< products.length; i++){
     var catalogDiv = document.createElement("div");
     document.querySelector(".catalog").append(catalogDiv);
@@ -42,8 +43,8 @@ for (let i = 0; i< products.length; i++){
         productCart.setAttribute('style', 'font-family:sans-serif;border: 1px solid black; margin:0; height: 110px; width: 100%; background-color: lightgreen');
         var newh3 = document.createElement("h4");
         newh3.id = "nameAmount"
-        console.log(newh3.id)
         newh3.innerHTML = products[i].name + "X" + amount1;
+        nameAmount = newh3.innerHTML;
         productCart.append(newh3)
         totalPrice = totalPrice + amount1 * products[i].price;
         let prefix = document.getElementById("totalP").innerHTML.split("=")[0]
@@ -54,11 +55,9 @@ for (let i = 0; i< products.length; i++){
         productCart.append(btn);
         btn.addEventListener('click',function f(){
             productCart.remove();
-            console.log("cart number = " + selectedProducts.indexOf("name: milk") + " removed")
-            const tag = document.getElementById("nameAmount");
-            const tagValue = tag.innerHTML;
-            console.log(tagValue)
-            totalPrice = totalPrice -  products[i].price;
+            const amountRemove = nameAmount.split("X")[1];
+            console.log(amountRemove)
+            totalPrice = totalPrice -  amountRemove * products[i].price;
             let prefix = document.getElementById("totalP").innerHTML.split("=")[0]
             let shave = "= "
             document.getElementById("totalP").innerHTML = prefix + shave + totalPrice+ "₪";
