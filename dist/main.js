@@ -10,23 +10,23 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/bro.js":
-/*!********************!*\
-  !*** ./src/bro.js ***!
-  \********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"bro\": () => (/* binding */ bro)\n/* harmony export */ });\nconst bro = greeting => {\n  return `${greeting} bro`;\n};\n\n\n//# sourceURL=webpack://webpackstore/./src/bro.js?");
-
-/***/ }),
-
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _bro__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bro */ \"./src/bro.js\");\n/* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/main.css */ \"./src/styles/main.css\");\n\n\nconsole.log((0,_bro__WEBPACK_IMPORTED_MODULE_0__.bro)('Dude'));\n\n//# sourceURL=webpack://webpackstore/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _products__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./products */ \"./src/products.js\");\n/* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/main.css */ \"./src/styles/main.css\");\n//import {bro} from './bro';\n\n\nconsole.log(_products__WEBPACK_IMPORTED_MODULE_0__.products);\ndocument.querySelector(\"button\").addEventListener(\"click\", result);\nfunction result() {\n  let a = document.getElementById('productName').value;\n  document.querySelector('.navBar').append(a);\n}\n\n//# sourceURL=webpack://webpackstore/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/products.js":
+/*!*************************!*\
+  !*** ./src/products.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"products\": () => (/* binding */ products)\n/* harmony export */ });\nconst products = [{\n  \"id\": 1,\n  \"name\": \"milk\",\n  \"price\": 10\n}, {\n  \"id\": 2,\n  \"name\": \"bread\",\n  \"price\": 14\n}, {\n  \"id\": 3,\n  \"name\": \"water\",\n  \"price\": 3\n}];\n\n\n//# sourceURL=webpack://webpackstore/./src/products.js?");
 
 /***/ }),
 
