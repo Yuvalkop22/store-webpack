@@ -18,6 +18,18 @@ for (let i = 0; i< products.length; i++){
     btn.addEventListener("click",function f() {
         console.log(products[i])
         selectedProducts.push(products[i]);
+        var productCart = document.createElement("div");
+        document.querySelector(".cart").append(productCart);
+        productCart.setAttribute('style', 'border: 1px solid black; height: 100px; width: 100%');
+        var newh3 = document.createElement("h4");
+        newh3.innerHTML = products[i].name + " , " + products[i].price;
+        productCart.append(newh3)
+        var btn = document.createElement("button");
+        btn.innerHTML = "click to remove"
+        productCart.append(btn);
+        btn.addEventListener('click',function f(){
+            productCart.remove();
+        })
     });
 }
 export {selectedProducts};
