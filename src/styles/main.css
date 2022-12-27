@@ -31,8 +31,20 @@ h1{
     display: grid;
     background-color: wheat;
     margin: 0px auto;
-    justify-content: center;
     grid-template-columns: repeat(4,1fr);
     grid-gap: 0px; 
     border: 1px solid black;
+}
+.btnOrder{
+    margin-top: -8px;
+    margin-bottom: 10px;
+}
+.cartHeadline{
+    text-decoration: underline;
+}
+.totalP{
+    font-family: sans-serif;
+}
+.labPname{
+    font-family: sans-serif;
 }
