@@ -2,8 +2,6 @@
 import {products} from './products';
 import "./styles/main.css";
 import {catalog} from './catalog';
-import {cart} from './cart';
+import {navBar} from './navBar';
+import {specifProducts} from './navBar';
 
-
-
- 
