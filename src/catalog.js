@@ -58,8 +58,7 @@ for (let i = 0; i< products.length; i++){
     //add product to cart 
     productBtnAdd.addEventListener("click",addToCart);
     function addToCart(){
-        const amount1 = document.getElementById(i).value; //amount of product
-                                                         //from each product
+        const amount1 = document.getElementById(i).value; //amount of product                             //from each product
         selectedProducts.push({
             "product": products[i].name,
             "amount": amount1,
