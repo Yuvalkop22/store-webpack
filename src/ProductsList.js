@@ -1,4 +1,4 @@
-const products = [
+const ProductsList = [
     {
         "id":1,
         "name": "milk",
@@ -47,6 +47,6 @@ const products = [
         "price": 20000,
         "category": "other",
         "imgUrl": "https://cdn.britannica.com/16/126516-050-2D2DB8AC/Triumph-Rocket-III-motorcycle-2005.jpg"
-    },
+    }
 ]
-export {products};
+export {ProductsList};

@@ -1,21 +1,21 @@
-import {products} from './products';
-import {selectedProducts} from './catalog';
 import {addToCart} from './cart';
-function createDiv(i){
+import {getRelevantProducts} from './catalog'
+let selectedProducts = [];
+function createDiv(i,relevantProducts){
     var productDiv = document.createElement("div"); //each product from the list
     document.querySelector(".catalog").append(productDiv);
     productDiv.setAttribute('style','border: 1px solid black;margin:10px;font-family:sans-serif;height: 200px;border-radius: 15px; text-align: center;width: 50%;background-color: lightblue;');
     ///////////////////////////////////////////////////////
     const productNameText = document.createElement("h3");
-    productNameText.innerHTML = products[i].name;
+    productNameText.innerHTML = relevantProducts[i].name;
     ///////////////////////////////////////////////////////
     const productPriceText = document.createElement("h4");
     productPriceText.setAttribute('style','margin:10px')
-    productPriceText.innerHTML = "price: " + products[i].price+'₪';
+    productPriceText.innerHTML = "price: " + relevantProducts[i].price+'₪';
     ///////////////////////////////////////////////////////
     var productImg = document.createElement("img");
-    productImg.src = products[i].imgUrl;
-    productImg.alt = products[i].name;
+    productImg.src = relevantProducts[i].imgUrl;
+    productImg.alt = relevantProducts[i].name;
     productImg.setAttribute('style','width: 40px;height: 40px; text-align:center; align-items:center; justify-content: center');
     ///////////////////////////////////////////////////////
     const productInputAmount = document.createElement("input");
@@ -28,7 +28,7 @@ function createDiv(i){
     productBtnAdd.innerHTML = "Add to cart";
     //add product to cart 
     productBtnAdd.addEventListener("click",()=>{
-        addToCart(products[i].name,i)
+        addToCart(relevantProducts[i].name,i)
     });
     productDiv.append(productNameText);
     productDiv.append(productImg);
@@ -36,4 +36,4 @@ function createDiv(i){
     productDiv.append(productInputAmount);
     productDiv.append(productBtnAdd);
 }
-export {createDiv}
+export {createDiv,selectedProducts}

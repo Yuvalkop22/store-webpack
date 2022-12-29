@@ -1,23 +1,27 @@
-import {products} from './products';
+import {ProductsList} from './ProductsList';
 import {createDiv} from './product';
 import "./styles/main.css";
 ///////////////////////////////////////////////////////////
 //navbar search 
+let relevantProducts = [];
 const searchDiv = document.getElementById("navBar");
-const btn = document.getElementById("btnSearch");
-btn.addEventListener("click",changeName);
-function changeName(){
-    const str = document.getElementById("productName").value;
-    const productName = document.createElement("h3");
-    searchDiv.appendChild(productName);
-    products
-    .filter((product)=>(product.category === str))
-    .map((product)=>(productName.innerHTML = productName.innerHTML + product.name + ","));
+const btnSearch = document.getElementById("btnSearch");
+btnSearch.addEventListener("click",()=>getRelevantProducts(ProductsList));
+console.log(relevantProducts);
+function getRelevantProducts(products){
+    relevantProducts.splice(0,relevantProducts.length);
+    const category = document.getElementById("categories").value;
+    if (category === "All"){
+        products.map((item)=>relevantProducts.push(item));
+    }
+    products.map((item)=>{
+        if (item.category === category){
+            relevantProducts.push(item);
+        }
+    })
+    document.querySelector(".catalog").replaceChildren();
+    for (let i = 0; i< relevantProducts.length; i++){
+        createDiv(i,relevantProducts);
+    }
 }
-///////////////////////////////////////////////////////////
-let selectedProducts = []; //list of selected product to cart
-//for loop for each product in products.js 
-for (let i = 0; i< products.length; i++){
-    createDiv(i);
-}
-export {selectedProducts}
+export {getRelevantProducts}
