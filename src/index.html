@@ -12,21 +12,21 @@
         <img src="./images/80945323.png" class="accountImg" />
     </div>
     <div class="navBar" id="navBar">        
-        <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" class="cartIcon"/>
+        <img id="cartButton" src="https://cdn-icons-png.flaticon.com/512/263/263142.png" class="cartIcon"/>
         <form>
             <label class="labPname">Choose Category Name: </label>
-                <select name="Categories" id="categories">
+                <select  name="Categories" id="categories">
+                    <option value="----">----</option>
                     <option value="All">All</option>
                     <option value="food">food</option>
                     <option value="Diary">Diary</option>
                     <option value="bread">bread</option>
                 </select>
-            <button id="btnSearch" type="button">Search</button>
+            <!-- <button id="btnSearch" type="button">Search</button> -->
         </form>
     </div>
     <div class="mainDiv">
         <div class="cart">
-            <h1 class="cartHeadline">Cart</h1>
             <h3 id="totalP" class="totalP">Total price = 0₪</h3>
             <button class="btnOrder" id="btnOrder">Order</button>
         </div>

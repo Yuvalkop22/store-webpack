@@ -1,7 +1,7 @@
 import {addToCart} from './cart';
 import {getRelevantProducts} from './catalog'
 let selectedProducts = [];
-function createDiv(i,relevantProducts){
+function createDiv(i,relevantProducts,index){
     var productDiv = document.createElement("div"); //each product from the list
     document.querySelector(".catalog").append(productDiv);
     productDiv.setAttribute('style','border: 1px solid black;margin:10px;font-family:sans-serif;height: 200px;border-radius: 15px; text-align: center;width: 50%;background-color: lightblue;');
@@ -28,7 +28,7 @@ function createDiv(i,relevantProducts){
     productBtnAdd.innerHTML = "Add to cart";
     //add product to cart 
     productBtnAdd.addEventListener("click",()=>{
-        addToCart(relevantProducts[i].name,i)
+        addToCart(i,relevantProducts[i].name,index)
     });
     productDiv.append(productNameText);
     productDiv.append(productImg);

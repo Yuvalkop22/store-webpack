@@ -22,6 +22,7 @@ h1{
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 .mainDiv{
     height: 100%;
@@ -29,15 +30,18 @@ h1{
     /* border: 1px solid black; */
     display: flex;
 }
+select{
+    text-align: center;
+}
 .cartIcon{
-    margin-right:199%;
+    position: absolute;
+    right: 92%;
     width: 30px;
     height: 30px;
 }
 .cart{
     width: 200px;
-    visibility: hidden;
-    /* border: 1px solid black; */
+    border: 1px solid black;
     text-align: center;
     background-color: wheat;
     justify-content: center;
@@ -47,8 +51,9 @@ h1{
     display: grid;
     background-color: wheat;
     margin: 0px auto;
+    margin-left: 40px;
     grid-template-columns: repeat(4,1fr);
-    grid-gap: 0px; 
+    grid-gap: 0px;
     /* border: 1px solid black; */
 }
 .btnOrder{

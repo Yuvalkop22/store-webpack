@@ -6,7 +6,8 @@ import "./styles/main.css";
 let relevantProducts = [];
 const searchDiv = document.getElementById("navBar");
 const btnSearch = document.getElementById("btnSearch");
-btnSearch.addEventListener("click",()=>getRelevantProducts(ProductsList));
+const categorySelect = document.getElementById("categories");
+categorySelect.addEventListener("change",()=>getRelevantProducts(ProductsList));
 console.log(relevantProducts);
 function getRelevantProducts(products){
     relevantProducts.splice(0,relevantProducts.length);
@@ -19,9 +20,14 @@ function getRelevantProducts(products){
             relevantProducts.push(item);
         }
     })
+    
     document.querySelector(".catalog").replaceChildren();
     for (let i = 0; i< relevantProducts.length; i++){
-        createDiv(i,relevantProducts);
+        ProductsList.map((item,index)=>{
+            if (item.id == relevantProducts[i].id){
+                createDiv(i,relevantProducts,index);
+            }
+        });
     }
 }
 export {getRelevantProducts}
