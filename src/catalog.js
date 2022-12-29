@@ -30,4 +30,5 @@ function getRelevantProducts(products){
         });
     }
 }
+
 export {getRelevantProducts}
