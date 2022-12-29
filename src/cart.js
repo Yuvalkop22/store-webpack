@@ -2,15 +2,19 @@ import {products} from './products';
 import {selectedProducts} from './catalog';
 var cartTotalPrice = 0;
 function addToCart(name,index){
-    const amount1 = document.getElementById(index).value; //amount of product                             //from each product
+    const amount = document.getElementById(index).value; //amount of product 
+    let key = selectedProducts.length;            
     selectedProducts.push({
         "product": name,
-        "amount": amount1,
-        "key": index
+        "productIndexInOriginalList": index,
+        "amount": amount,
+        "key": key,
     })
-    createDivCart(index,amount1)
+    
+
+    createDivCart(index,amount,key)
 }
-function createDivCart(i,amount1){
+function createDivCart(i,amount1,key){
     console.log(i);
     //creating cart - html
     var productCart = document.createElement("div"); //each product in cart
@@ -30,15 +34,22 @@ function createDivCart(i,amount1){
     cartBtnRemove.innerHTML = "click to remove"
     productCart.append(cartBtnRemove);
     cartBtnRemove.addEventListener('click', ()=>{
-        removeProductFromCart(productCart,amount1,i)
+        removeProductFromCart(productCart,amount1,i,key)
     });
 }
 
-function removeProductFromCart(productCart,amountRemove,i){
+function removeProductFromCart(productCart,amountRemove,i,key){
     productCart.remove(); //remove the div not the product from the list
+    delete selectedProducts[key];
     cartTotalPrice = cartTotalPrice -  (amountRemove * products[i].price);
     const prefix = document.getElementById("totalP").innerHTML.split("=")[0]
     document.getElementById("totalP").innerHTML = prefix + "= " + cartTotalPrice+ "₪";
 }
-
+function setSelectedAfterRemove(arr){
+    
+}
+const orderBtn = document.getElementById("btnOrder");
+orderBtn.addEventListener("click", ()=>{
+    console.log(Object.values(selectedProducts))    
+});
 export {addToCart};
