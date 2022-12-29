@@ -45,8 +45,15 @@ const ProductsList = [
         "id": 7,
         "name": "motorcycle",
         "price": 20000,
-        "category": "other",
+        "category": "Other",
         "imgUrl": "https://cdn.britannica.com/16/126516-050-2D2DB8AC/Triumph-Rocket-III-motorcycle-2005.jpg"
+    },
+    {
+        "id": 8,
+        "name": "pasta",
+        "price": 15,
+        "category": "food",
+        "imgUrl": "https://storage.googleapis.com/st2.foodsd.co.il/Images/kitchens/2.webp",
     }
 ]
 export {ProductsList};

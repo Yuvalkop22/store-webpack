@@ -39,7 +39,7 @@ function createDivCart(i,amount1,key){
 function removeProductFromCart(productCart,amountRemove,i,key){
     productCart.remove(); //remove the div not the product from the list
     // delete selectedProducts[key];
-    selectedProducts.splice(key,1)
+    selectedProducts.splice(i,1);
     cartTotalPrice = cartTotalPrice -  (amountRemove * ProductsList[i].price);
     const prefix = document.getElementById("totalP").innerHTML.split("=")[0]
     document.getElementById("totalP").innerHTML = prefix + "= " + cartTotalPrice+ "₪";
@@ -51,13 +51,6 @@ const orderBtn = document.getElementById("btnOrder");
 orderBtn.addEventListener("click", ()=>{
     orderJson(selectedProducts, cartTotalPrice);
 });
-function getTotalAmountProductsInOrder(products){
-    let totalProductsAmount = 0;
-    products.map((product)=>{
-        totalProductsAmount += parseInt(product.amount)
-    })
-    return totalProductsAmount;
-}
 function orderJson(products, cartTotalPrice){
     const totalAmountOfProducts = getTotalAmountProductsInOrder(products);
     const order = {
@@ -66,5 +59,12 @@ function orderJson(products, cartTotalPrice){
         "totalProducts": totalAmountOfProducts,
     }
     console.log(order)
+}
+function getTotalAmountProductsInOrder(products){
+    let totalProductsAmount = 0;
+    products.map((product)=>{
+        totalProductsAmount += parseInt(product.amount)
+    })
+    return totalProductsAmount;
 }
 export {addToCart};
