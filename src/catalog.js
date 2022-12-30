@@ -5,10 +5,8 @@ import "./styles/main.css";
 //navbar search 
 let relevantProducts = [];
 const searchDiv = document.getElementById("navBar");
-const btnSearch = document.getElementById("btnSearch");
 const categorySelect = document.getElementById("categories");
 categorySelect.addEventListener("change",()=>getRelevantProducts(ProductsList));
-console.log(relevantProducts);
 function getRelevantProducts(products){
     relevantProducts.splice(0,relevantProducts.length);
     const category = document.getElementById("categories").value;
