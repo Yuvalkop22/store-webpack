@@ -73,7 +73,11 @@ function orderJson(products, cartTotalPrice){
         "totalPrice": cartTotalPrice, 
         "totalProducts": totalAmountOfProducts,
     }
-    console.log(order)
+    if (products.length != 0)
+        alert("Thanks for your order!")
+    else
+        alert("Your cart is empty")
+    window.location.reload();
 }
 function getTotalAmountProductsInOrder(products){
     let totalProductsAmount = 0;
