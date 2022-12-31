@@ -4,7 +4,7 @@ import {getRelevantProducts} from './catalog'
 function createDiv(product){
     let productDiv = document.createElement("div"); //each product from the list
     document.querySelector(".catalog").append(productDiv);
-    productDiv.classList.add("productDiv")
+    productDiv.classList.add("productDiv");
 
     const productNameText = document.createElement("h3");
     productNameText.innerHTML = product.name;
@@ -28,7 +28,7 @@ function createDiv(product){
     productInputAmount.id = product.id;
 
     const productBtnAdd = document.createElement("button");
-    productBtnAdd.setAttribute('style', 'margin-bottom: 20px')
+    productBtnAdd.setAttribute('style', 'margin-bottom: 20px');
     productBtnAdd.innerHTML = "Add to cart";
 
     productBtnAdd.addEventListener("click",()=>{

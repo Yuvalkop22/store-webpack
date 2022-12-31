@@ -30,7 +30,7 @@ function addToCart(product){
         "amount": amount,
         "key": product.id,
     })
-    createDivCart(product,amount)
+    createDivCart(product,amount);
 }
 
 
@@ -82,13 +82,13 @@ function orderJson(products, cartTotalPrice){
         window.location.reload();
     }
     else{
-        alert("Your cart is empty")
+        alert("Your cart is empty");
     }
 }
 function getTotalAmountProductsInOrder(products){
     let totalProductsAmount = 0;
     products.map((product)=>{
-        totalProductsAmount += parseInt(product.amount)
+        totalProductsAmount += parseInt(product.amount);
     })
     return totalProductsAmount;
 }
