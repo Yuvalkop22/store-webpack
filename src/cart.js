@@ -1,63 +1,67 @@
-import {selectedProducts} from './product';
-import {ProductsList} from './ProductsList';
-var cartTotalPrice = 0;
+let cartTotalPrice = 0;
+let selectedProducts = [];
 
-var imgBtn = document.getElementById("cartButton");
-imgBtn.addEventListener("click", ()=>{    
-    var cart = document.querySelector(".cart");
-    var originalText = document.getElementById("totalP").value
-    if (selectedProducts.length == 0){
-        document.getElementById("totalP").innerHTML = "No Products Selected Yet"
-    }else{
-        document.getElementById("totalP").innerHTML = originalText
-    }
-})
-
-function addToCart(i,name,index){
-    const amount = document.getElementById(i).value; //amount of product 
-    let key = selectedProducts.length;            
-    selectedProducts.push({
-        "product": name,
-        "productIndexInOriginalList": index,
-        "amount": amount,
-        "key": key,
-    })
-    createDivCart(i,amount,key,index)
-}
-function createDivCart(i,amount1,key,originalIndex){
-    var productCart = document.createElement("div"); //each product in cart
-    document.querySelector(".cart").append(productCart);
-    productCart.setAttribute('style', 'font-family:sans-serif;border: 1px solid black; margin:0; height: 110px; width: 100%; background-color: lightgreen');
-    var selectedProductNameXAmountText = document.createElement("h4");
-    selectedProductNameXAmountText.id = "nameAmount"
-    //for example => breadX1 = 14₪
-    selectedProductNameXAmountText.innerHTML = ProductsList[originalIndex].name + "X" + amount1 + " = " + ProductsList[originalIndex].price * amount1 + "₪";
-    productCart.append(selectedProductNameXAmountText)
-    ////////////////////////////////////////////////////////////
-    cartTotalPrice = cartTotalPrice + amount1 * ProductsList[originalIndex].price;
-    const prefix = document.getElementById("totalP").innerHTML.split("=")[0] //Total price
-    document.getElementById("totalP").innerHTML = prefix + "= " + cartTotalPrice+ "₪";
-    ////////////////////////////////////////////////////////////
-    const cartBtnRemove = document.createElement("button");
-    cartBtnRemove.innerHTML = "click to remove"
-    productCart.append(cartBtnRemove);
-    cartBtnRemove.addEventListener('click', ()=>{
-        removeProductFromCart(productCart,amount1,i,key,originalIndex)
-    });
-}
-function getElementIndexByKey(key){
-    selectedProducts.map((item,index)=>{
-        if (item.key === key){
-            return (index);
+function isProductAlreadyInCart(productName){
+    let count = 0;
+    selectedProducts.map((product)=>{
+        if(product.name === productName){
+            count++;
         }
     })
+    if (count > 0){
+        return true;
+    }else{
+        return false;
+    }
 }
-function removeProductFromCart(productCart,amountRemove,i,key,originalIndex){
-    productCart.remove(); //remove the div not the product from the list
-    console.log("price = " + ProductsList[originalIndex].price);
-    const index = getElementIndexByKey(key);
-    selectedProducts.splice(index,1);
-    cartTotalPrice = cartTotalPrice -  (amountRemove * ProductsList[originalIndex].price);
+
+function addToCart(product){
+    const amount = document.getElementById(product.id).value;
+    if (amount <= 0){
+      alert("Oops you must enter valid number");
+      return;  
+    } 
+    if(isProductAlreadyInCart(product.name)){
+        alert("Oops product already in cart...");
+        return;
+    }            
+    selectedProducts.push({
+        "name": product.name,
+        "amount": amount,
+        "key": product.id,
+    })
+    createDivCart(product,amount);
+}
+
+
+function createDivCart(product,amount){
+    let productCartDiv = document.createElement("div"); //each product in cart
+    document.querySelector(".cart").append(productCartDiv);
+    productCartDiv.classList.add("productCartDiv");
+    
+    const selectedProductNameXAmountText = document.createElement("h4");
+    
+    selectedProductNameXAmountText.innerHTML = product.name + "X" + amount + " = " + product.price * amount + "₪";
+    productCartDiv.append(selectedProductNameXAmountText);
+    
+    
+    cartTotalPrice = cartTotalPrice + amount * product.price;
+    const prefix = document.getElementById("totalP").innerHTML.split("=")[0] //Total price
+    document.getElementById("totalP").innerHTML = prefix + "= " + cartTotalPrice+ "₪";
+    
+    const cartBtnRemove = document.createElement("button");
+    cartBtnRemove.innerHTML = "click to remove"
+    productCartDiv.append(cartBtnRemove);
+
+    cartBtnRemove.addEventListener('click', ()=>{
+        removeProductFromCart(productCartDiv,product,amount)
+    });
+}
+
+function removeProductFromCart(productCartDiv,product,amount){
+    productCartDiv.remove(); //remove the div not the product from the list
+    selectedProducts.splice(product.key,1);
+    cartTotalPrice = cartTotalPrice -  (amount * product.price);
     const prefix = document.getElementById("totalP").innerHTML.split("=")[0]
     document.getElementById("totalP").innerHTML = prefix + "= " + cartTotalPrice+ "₪";
 }
@@ -73,16 +77,18 @@ function orderJson(products, cartTotalPrice){
         "totalPrice": cartTotalPrice, 
         "totalProducts": totalAmountOfProducts,
     }
-    if (products.length != 0)
+    if (products.length != 0){
         alert("Thanks for your order!")
-    else
-        alert("Your cart is empty")
-    window.location.reload();
+        window.location.reload();
+    }
+    else{
+        alert("Your cart is empty");
+    }
 }
 function getTotalAmountProductsInOrder(products){
     let totalProductsAmount = 0;
     products.map((product)=>{
-        totalProductsAmount += parseInt(product.amount)
+        totalProductsAmount += parseInt(product.amount);
     })
     return totalProductsAmount;
 }
